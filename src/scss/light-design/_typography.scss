@@ -1,0 +1,331 @@
+/*
+    ---------------- Typography ----------------
+
+    - Heading
+    - Body text
+    - Emphasis & misc
+    - Alignment & Transformation
+    - Contextual colors
+    - Contextual backgrounds
+    - Page header
+    - Lists
+      -- Unordered and Ordered lists
+      -- list Unstyled
+      -- list inline
+    - Description Lists
+      -- Horizontal description lists
+    - Misc
+      -- Abbreviations and acronyms
+      -- Blockquotes
+      -- Blockquotes Right
+      -- Addresses
+
+*/
+
+/*
+    ---------------- Heading ----------------
+*/
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $font-family-heading;
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
+    color: $heading-color;
+
+    small,
+    .small {
+        font-weight: normal;
+        line-height: 1;
+        color: $headings-small-color;
+    }
+}
+
+h1, h2, h3,
+.h1, .h2, .h3 {
+    margin-top: $line-height-computed;
+    margin-bottom: $line-height-computed / 2;
+
+    small,
+    .small {
+        font-size: 65%;
+    }
+}
+
+h4, h5, h6,
+.h4, .h5, .h6 {
+    margin-top: $line-height-computed / 2;
+    margin-bottom: $line-height-computed / 2;
+
+    small,
+    .small {
+        font-size: 75%;
+    }
+}
+
+h1, .h1 { font-size: $font-size-h1; }
+h2, .h2 { font-size: $font-size-h2; }
+h3, .h3 { font-size: $font-size-h3; }
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+/*
+    ---------------- Body text ----------------
+*/
+
+p {
+    margin: 0 0 ($line-height-computed / 2);
+
+    &:only-child {
+        margin-bottom: 0;
+    }
+}
+
+.lead {
+    margin-bottom: $line-height-computed;
+    font-size: $body-font-size * 1.15;
+    font-weight: 300;
+    line-height: 1.4;
+
+    @media screen and (min-width: $screen-sm-min) {
+        font-size: $body-font-size * 1.5;
+    }
+}
+
+/*
+    ---------------- Emphasis & misc ----------------
+*/
+
+small,
+.small {
+    font-size: floor(($body-font-small / $body-font-size) * 100%);
+}
+
+mark,
+.mark {
+    background-color: $state-warning-bg;
+    padding: .2em;
+}
+
+/*
+    ---------------- Alignment & Transformation ----------------
+*/
+
+@include text-property();
+
+@each $item in $screen-list {
+    $index: index($screen-list, $item);
+
+    @media screen and (min-width: nth($screen-list-name, $index)) {
+        @include text-property($item);
+    }
+}
+
+/*
+    ---------------- Contextual colors ----------------
+*/
+.text-muted {
+    color: $text-mudted;
+}
+
+.text-primary {
+    @include text-emphasis-variant($primary-color)
+}
+
+.text-success {
+    @include text-emphasis-variant($success-color)
+}
+
+.text-info {
+    @include text-emphasis-variant($info-color)
+}
+
+.text-warning {
+    @include text-emphasis-variant($warning-color)
+}
+
+.text-danger {
+    @include text-emphasis-variant($danger-color)
+}
+
+/*
+    ---------------- Contextual backgrounds ----------------
+*/
+.bg-primary {
+    @include bg-variant($primary-color, #fff);
+}
+
+.bg-success {
+    @include bg-variant($success-color, #fff);
+}
+
+.bg-info {
+    @include bg-variant($info-color, #fff);
+}
+
+.bg-warning {
+    @include bg-variant($warning-color, #fff);
+}
+
+.bg-danger {
+    @include bg-variant($danger-color, #fff);
+}
+
+/*
+    ---------------- Page header ----------------
+*/
+.page-header { 
+    padding-bottom: $line-height-computed / 2;
+    margin: ($line-height-computed * 2) 0 $line-height-computed;
+    border-bottom: 1px solid $page-header-border-color;
+}
+
+/*
+    ---------------- Lists ----------------
+*/
+
+// Unordered and Ordered lists
+ul,
+ol {
+  margin: 0 0 ($line-height-computed / 2);
+  padding: 0 0 0 (($line-height-computed * 3) / 4);
+  list-style-position: inside;
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+// list Unstyled
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+// list inline 
+.list-inline {
+    @extend .list-unstyled;
+    margin-left: -0.5rem;
+
+    > li {
+        display: inline-block;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+
+/*
+    ---------------- Description Lists ----------------
+*/
+dl {
+    margin-top: 0;
+    margin-bottom: $line-height-computed;
+}
+
+dt,
+dd {
+    line-height: $line-height-base;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+// Horizontal description lists
+
+.dl-horizontal {
+    dd {
+        @include clearfix();
+    }
+
+    @media screen and (min-width: $dl-horizontal-breakpoint) {
+        dt {
+            float: left;
+            width: $dl-horizontal-offset - 20px;
+            clear: left;
+            text-align: right;
+            @include text-overflow();
+        }
+        dd {
+            margin-left: $dl-horizontal-offset;
+        }
+    }
+}
+
+/*
+    ---------------- Misc ----------------
+*/
+
+// Abbreviations and acronyms
+abbr[title],
+abbr[data-original-title] {
+    cursor: help;
+    border-bottom: 1px dotted $abbr-border-color;
+}
+
+.initialism {
+    font-size: 90%;
+    text-transform: uppercase;
+}
+
+// Blockquotes
+
+blockquote {
+    padding: ($line-height-computed / 2) $line-height-computed;
+    margin: 0 0 $line-height-computed;
+    font-size: $blockquote-font-size;
+    border-left: 5px solid $blockquote-border-color;
+
+    p,
+    ul,
+    ol {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    footer,
+    small,
+    .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: $line-height-base;
+    color: $blockquote-small-color;
+
+        &:before {
+            content: '-'; // em dash, nbsp
+        }
+    }
+
+
+    &.blockquote-reverse,
+    &.pull-right {
+        padding-right: 1.5rem;
+        padding-left: 0;
+        border-left: 0;
+        border-right: 5px solid $blockquote-border-color;
+        text-align: right;
+
+        footer,
+        small,
+        .small {
+            &:before { content: ''; }
+            &:after {
+                content: '-'; // nbsp, em dash
+            }
+        }
+    }
+}
+
+// Addresses
+address {
+    margin-bottom: $line-height-computed;
+    font-style: normal;
+    line-height: $line-height-base;
+}

@@ -1,0 +1,40 @@
+@import '../scss/variable';
+
+mat-drawer-container {
+  height: 100vh;
+}
+
+mat-drawer {
+  width: $mat-drawer-width;
+}
+
+.menu-drawer-btn {
+  padding: 0;
+  min-width: $menu-drawer-btn-size;
+  line-height: $menu-drawer-btn-size + 10px;
+  height: $menu-drawer-btn-size;
+  vertical-align: middle;
+  border: none;
+  background: transparent;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  outline: 0 none;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+
+  &.menu-drawer-close-btn {
+    right: 0;
+  }
+
+  &.menu-drawer-toggle-btn {
+    left: 0;
+    color: $menu-drawer-toggle-btn-text-color;
+    line-height: $header-container-wrapper-height;
+  }
+}
+
+.menu-action-list {
+  padding-top: $menu-drawer-btn-size;
+}

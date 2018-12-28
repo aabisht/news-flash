@@ -1,0 +1,23 @@
+@import '../../scss/common';
+
+.header-container-wrapper {
+  background: $header-container-wrapper-bg-color;
+  color: $header-container-wrapper-text-color;
+  padding-left: $menu-drawer-btn-size + 10px;
+  padding-right: $menu-drawer-btn-size + 10px;
+  min-height: $header-container-wrapper-height;
+}
+
+
+.weather-wrapper,
+.current-time-wrapper {
+  display: inline-block;
+
+  .larg-text {
+    @include fontSize($weather-time-larg-text-size);
+  }
+}
+
+.current-time-wrapper {
+  margin-left: 10px;
+}

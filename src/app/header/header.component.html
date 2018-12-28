@@ -1,0 +1,27 @@
+<header class="header-container">
+  <div class="header-container-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+          <div class="header-logo-wrapper">
+            <a href="javascript:;">
+              <span>News Flash</span>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">
+          <div class="header-extra-wrapper text-sm-right" *ngIf="(weatherData && currentTime)">
+            <div class="weather-wrapper" *ngIf="(weatherData)">
+              <span class="larg-text"><strong>{{ currentTemp }}</strong></span>
+              <span class="small-text">{{ weatherData.name }}</span>
+            </div>
+            <div class="current-time-wrapper" *ngIf="(currentTime)">
+              <span class="larg-text"><strong>{{ currentTime.date }}</strong></span>
+              <span class="small-text">{{ currentTime.month + ', ' + currentTime.days }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

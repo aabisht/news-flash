@@ -1,0 +1,197 @@
+$gray-base:              #000;
+$white-color:            #fff;
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33.5%); // #555
+$gray-light:             lighten($gray-base, 46.7%); // #777
+$gray-lighter:           lighten($gray-base, 93.5%); // #eee
+
+$primary-color:     #337ab7;
+$disabled-color:    #777777;
+$success-color:     #3c763d;
+$info-color:        #31708f;
+$warning-color:     #8a6d3b;
+$danger-color:      #a94442;
+$transparent-color: rgba(0,0,0,0);
+
+$text-mudted:              $gray-light;
+$page-header-border-color: $gray-lighter;
+$abbr-border-color:        $gray-light;
+
+// Form states and alerts
+$state-success-text:             #3c763d;
+$state-success-bg:               #dff0d8;
+$state-success-border:           darken($state-success-bg, 5%);
+
+$state-info-text:                #31708f;
+$state-info-bg:                  #d9edf7;
+$state-info-border:              darken($state-info-bg, 7%);
+
+$state-warning-text:             #8a6d3b;
+$state-warning-bg:               #fcf8e3;
+$state-warning-border:           darken($state-warning-bg, 5%);
+
+$state-danger-text:              #a94442;
+$state-danger-bg:                #f2dede;
+$state-danger-border:            darken($state-danger-bg, 5%);
+
+
+$body-bg:               $white-color;
+$text-color:            $gray-dark;
+
+$font-family-primary: 'Open Sans', sans-serif;
+$font-family-secondary: 'Roboto', sans-serif;
+
+$base-font-size: 10px;
+$body-font-size: 1rem;
+$body-font-large: ($body-font-size * 1.25);
+$body-font-small: ($body-font-size * 0.85);
+
+$link-color:            $primary-color;
+$link-hover-color:      darken($primary-color, 15%);
+$link-hover-decoration: none;
+
+$font-family-heading: $font-family-secondary;
+$heading-font-weight: 600;
+$heading-line-height: 1.2;
+$heading-color: inherit;
+$headings-small-color: $gray-light;
+
+$font-size-h1:            $body-font-size * 2.6;
+$font-size-h2:            $body-font-size * 2.15;
+$font-size-h3:            $body-font-size * 1.7;
+$font-size-h4:            $body-font-size * 1.25;
+$font-size-h5:            $body-font-size;
+$font-size-h6:            $body-font-size * 0.85;
+
+$line-height-base:        1.428571429;
+$line-height-computed:    $body-font-size * $line-height-base;
+
+$padding-base-vertical    : 0.6rem;
+$padding-base-horizontal  : 1.2rem;
+
+$padding-large-vertical   : 1.0rem;
+$padding-large-horizontal : 1.6rem;
+
+$padding-small-vertical   : 0.5rem;
+$padding-small-horizontal : 1.0rem;
+
+$padding-xs-vertical      : 0.1rem;
+$padding-xs-horizontal    : 0.5rem;
+
+$line-height-large        : 1.3333333;
+$line-height-small        : 1.5;
+
+$border-radius-base       : 0.4rem;
+$border-radius-small      : 0.3rem;
+$border-radius-large      : 0.6rem;
+
+// Thumbnails
+
+$thumbnail-padding: 0.4rem;
+$thumbnail-bg: $body-bg;
+$thumbnail-border:        #ddd;
+$thumbnail-border-radius:   $border-radius-base;
+$thumbnail-caption-color:   $text-color;
+$thumbnail-caption-padding: 0.9rem;
+
+$hr-border: $gray-lighter;
+
+// Media queries breakpoints
+
+$screen-xs-min: 480px;
+$screen-xs-max: ($screen-xs-min - 1);
+$screen-sm-min: 768px;
+$screen-sm-max: ($screen-sm-min - 1);
+$screen-md-min: 991px;
+$screen-md-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-lg-max: ($screen-lg-min - 1);
+
+$grid-float-breakpoint: screen-sm-min;
+
+$component-offset-horizontal: 180px;
+
+$dl-horizontal-offset:     $component-offset-horizontal;
+$dl-horizontal-breakpoint: $grid-float-breakpoint;
+
+$blockquote-font-size:        ($body-font-size * 1.25);
+$blockquote-border-color:     $gray-lighter;
+$blockquote-small-color:      $gray-light;
+
+
+// Grid system
+
+$grid-columns      :         12;
+$grid-gutter-width :         3em;
+
+
+$screen-list        : '-xs', '-sm', '-md', '-lg';
+$screen-list-name   : $screen-xs-min, $screen-sm-min, $screen-md-min, $screen-lg-min;
+$container-sm       : 750px;
+$container-md       : 970px;
+$container-lg       : 1170px;
+
+// Table
+$table-bg                     : transparent;
+$table-cell-padding           : 0.8rem;
+$table-border-color           : #ddd;
+$table-condensed-cell-padding : 0.5rem;
+$table-bg-accent              : #f9f9f9;
+$table-bg-hover               : #f5f5f5;
+$table-bg-active              : $table-bg-hover;
+
+
+//== Forms
+//
+//##
+
+$input-bg:                       #fff;
+$input-bg-disabled:              $gray-lighter;
+$input-label-disabled:           $gray;
+
+$input-color:                    $gray;
+$input-border:                   #ccc;
+
+$input-border-radius:            $border-radius-base;
+$input-border-radius-large:      $border-radius-large;
+$input-border-radius-small:      $border-radius-small;
+
+$input-border-focus:             #66afe9;
+
+$input-color-placeholder:        #999;
+
+$input-helper-text-color:        #777;
+
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 0.2);
+$input-height-large:             ($body-font-large * $line-height-large + ($padding-large-vertical * 2) + 0.2);
+$input-height-small:             ($body-font-small * $line-height-small + ($padding-small-vertical * 2) + 0.2);
+
+$form-group-margin-bottom:       1.5rem;
+
+$legend-color:                   $gray-dark;
+$legend-border-color:            #e5e5e5;
+
+$input-group-addon-bg:           $gray-lighter;
+$input-group-addon-border-color: $input-border;
+
+$material-input-padding:                1.5rem;
+$material-checkbox-width:               2.0rem;
+$material-checkbox-height:              2.0rem;
+$material-radio-width:                  2.0rem;
+$material-radio-height:                 2.0rem;
+$material-checkbox-border-radius:       0.2rem;
+
+//** Disabled cursor for form controls and buttons.
+$cursor-disabled:                not-allowed;
+
+//== Buttons
+
+$btn-font-weight:                500 !default;
+
+$btn-default-color:              #333 !default;
+$btn-default-bg:                 #fff !default;
+
+$btn-border-radius-base:         $border-radius-base !default;
+$btn-border-radius-large:        $border-radius-large !default;
+$btn-border-radius-small:        $border-radius-small !default;

@@ -1,0 +1,14 @@
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+@mixin fontSize($size, $isImportant: false) {
+	@if $isImportant {
+		font-size: $size !important; // Fallback in px
+		font-size: calculateRem($size) !important;
+	} @else {
+		font-size: $size; // Fallback in px
+		font-size: calculateRem($size);
+	}
+}

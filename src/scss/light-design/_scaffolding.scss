@@ -1,0 +1,155 @@
+/*
+    ---------------- Scaffolding ----------------
+
+    - Reset the box-sizing
+    - Selection color
+    - Body reset
+    - Reset fonts for relevant elements
+    - Figures
+    - Images
+
+*/
+
+/*
+    ---------------- Reset the box-sizing ----------------
+*/
+
+* {
+    &, &:before, &:after {
+        @include box-sizing(border-box);
+    }
+}
+
+/*
+    ---------------- Selection color ----------------
+*/
+@include selection-color($primary-color, #fff);
+
+
+/*
+    ---------------- Body reset ----------------
+*/
+
+html {
+                      // font-size: $base-font-size;
+    -webkit-tap-highlight-color: $transparent-color;
+}
+
+body {
+    font-family: $font-family-primary;
+    font-size: $body-font-size;
+    line-height: $line-height-base;
+    color: $text-color;
+    background-color: $body-bg;
+}
+
+/*
+    ---------------- Reset fonts for relevant elements ----------------
+*/
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/*
+    ---------------- Links ----------------
+*/
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $link-hover-color;
+        text-decoration: $link-hover-decoration;
+    }
+
+    &:focus {
+        @include tab-focus();
+    }
+}
+
+/*
+    ---------------- Figures ----------------
+*/
+
+figure {
+    margin: 0;
+}
+
+/*
+    ---------------- Images ----------------
+*/
+
+img {
+    vertical-align: middle;
+}
+
+// Responsive images
+.img-responsive {
+    @include img-responsive();
+}
+
+// Rounded corners
+.img-rounded {
+    border-radius: $border-radius-large;
+}
+
+// Image thumbnails
+.img-thumbnail {
+    padding: $thumbnail-padding;
+    line-height: $line-height-base;
+    background-color: $thumbnail-bg;
+    border: 1px solid $thumbnail-border;
+    border-radius: $thumbnail-border-radius;
+
+    @include transition(all .2s ease-in-out);
+
+    @include img-responsive(inline-block);
+}
+
+// Rounded Images
+.img-circle {
+    border-radius: 50%; // set radius in percents
+}
+
+// Horizontal rules
+hr {
+    margin-top: $line-height-computed;
+    margin-bottom: $line-height-computed;
+    border: 0;
+    border-top: 1px solid $hr-border;
+}
+
+// Only display content to screen readers
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.sr-only-focusable {
+    &:active,
+    &:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+    }
+}
+
+// iOS "clickable elements" fix for role="button"
+[role="button"] {
+    cursor: pointer;
+}
