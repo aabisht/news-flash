@@ -79,7 +79,7 @@ export class Constants {
   }
 
   public static get API_URL(): string {
-    return 'https://newsapi.org/';
+    return 'https://newsapi.org/v2/';
   }
 
   public static get Weather_URL(): string {

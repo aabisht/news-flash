@@ -1,0 +1,57 @@
+@import '../../../scss/common';
+
+.home-header-slider-wrapper {
+  margin-top: 20px;
+}
+
+.home-header-slider {
+  .owl-nav {
+    margin: 0;
+
+    .owl-prev,
+    .owl-next {
+      position: absolute;
+      top: 50%;
+      margin: 0;
+      margin-top: -25px;
+      font-size: 60px !important;
+      width: 50px;
+      text-align: center;
+      height: 85px;
+      line-height: 85px !important;
+      vertical-align: middle;
+      background: transparent !important;
+      color: $home-header-slider-arrow-color !important;
+      outline: 0 none;
+    }
+
+    .owl-prev {
+      left: 0;
+    }
+
+    .owl-next {
+      right: 0;
+    }
+  }
+
+  &.owl-theme .owl-dots .owl-dot.active span,
+  &.owl-theme .owl-dots .owl-dot:hover span {
+    background: $home-header-slider-dot-color;
+  }
+
+  .mat-card-title {
+    a {
+      color: $home-header-slider-mat-card-title-color;
+
+      &:hover, &:focus {
+        color: darken($home-header-slider-mat-card-title-color, 5%);
+      }
+    }
+  }
+
+  .meta {
+    > div {
+      margin-bottom: 5px;
+    }
+  }
+}

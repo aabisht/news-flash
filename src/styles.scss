@@ -4,6 +4,9 @@
 @import './scss/light-design/light-design';
 @import './scss/common';
 
+@import '~owl.carousel/dist/assets/owl.carousel.css';
+@import '~owl.carousel/dist/assets/owl.theme.default.css';
+
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
@@ -33,4 +36,45 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 .unicorn-dark-theme {
   @include angular-material-theme($dark-theme);
+}
+
+.heading {
+  font-weight: bold;
+  color: $heading-color;
+  margin-bottom: 20px;
+}
+
+
+.equal-height-slider {
+  .owl-stage {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-self: stretch;
+
+    .owl-item {
+      display: flex;
+      flex: 1 0 auto;
+
+      mat-card {
+        height: 99%;
+      }
+
+      img {
+        width: calc(100% + 32px);
+      }
+    }
+  }
+}
+
+.break-all-word {
+  word-break: break-all;
+}
+
+.mat-card-header-text {
+  .material-icons {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
 }

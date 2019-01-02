@@ -1,3 +1,4 @@
+import { LoaderService } from './../services/loader/loader.service';
 import { IWeatherData } from './../interface/weather.interface';
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../services/weather/weather.service';
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
   currentTime: IDate;
   currentTemp: string;
 
-  constructor(private _weatherService: WeatherService) { }
+  constructor(private _weatherService: WeatherService,
+              private _loaderService: LoaderService) { }
 
   ngOnInit() {
     this.currentTime = {
@@ -30,14 +32,16 @@ export class HeaderComponent implements OnInit {
     navigator.geolocation ? this.enableLocation = true : this.enableLocation = false;
 
     if (this.enableLocation) {
+      this._loaderService.setloaderVisible(true);
       navigator.geolocation.getCurrentPosition((position) => {
         this._weatherService.getWeather(position.coords.latitude, position.coords.longitude).subscribe(
           data => {
-            console.log(data);
             this.weatherData = data;
             this.currentTemp = (data.main.temp - 273.15).toString() + '°C';
+            this._loaderService.setloaderVisible(false);
           }, error => {
             console.log('Error: ' + error);
+            this._loaderService.setloaderVisible(false);
           }
         );
       });
@@ -49,8 +53,8 @@ export class HeaderComponent implements OnInit {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.currentTime.days = days[date.getDay()];
 
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-                        'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                        'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     this.currentTime.month = monthNames[date.getMonth()];
 
     this.currentTime.date = date.getDate();

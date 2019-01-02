@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -48,11 +49,17 @@ import {
 } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
 import { WeatherService } from './services/weather/weather.service';
+import { LoaderService } from './services/loader/loader.service';
+import { HomeComponent } from './pages/home/home.component';
+import { TopHeadlinesService } from './services/top-headlines/top-headlines.service';
+
+import { OwlModule } from 'ngx-owl-carousel';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -96,10 +103,18 @@ import { WeatherService } from './services/weather/weather.service';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    HttpModule
+    HttpModule,
+    OwlModule,
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' }
+    ])
   ],
   providers: [
-    WeatherService
+    WeatherService,
+    LoaderService,
+    TopHeadlinesService
   ],
   bootstrap: [AppComponent]
 })

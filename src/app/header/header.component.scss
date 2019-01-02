@@ -1,23 +1,51 @@
 @import '../../scss/common';
 
+.header-container {
+  height: $header-container-wrapper-height;
+
+}
 .header-container-wrapper {
   background: $header-container-wrapper-bg-color;
   color: $header-container-wrapper-text-color;
   padding-left: $menu-drawer-btn-size + 10px;
   padding-right: $menu-drawer-btn-size + 10px;
-  min-height: $header-container-wrapper-height;
+  height: $header-container-wrapper-height;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 
 .weather-wrapper,
 .current-time-wrapper {
   display: inline-block;
+  margin-top: 6px;
 
   .larg-text {
     @include fontSize($weather-time-larg-text-size);
+    margin-right: 5px;
   }
 }
 
 .current-time-wrapper {
-  margin-left: 10px;
+  margin-left: 15px;
+}
+
+.header-logo-wrapper {
+  margin-top: 10px;
+
+  a {
+    color: $header-container-wrapper-text-color;
+    @include fontSize(24px);
+    font-weight: bold;
+    font-family: $header-logo-font-family;
+
+    > span {
+      color: $header-logo-seconday-color;
+      font-family: $header-logo-secondary-font-family;
+    }
+  }
 }

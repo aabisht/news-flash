@@ -1,3 +1,4 @@
+import { LoaderService } from './services/loader/loader.service';
 import { Constants } from './app.constant';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   menu: any[];
+  isLoaderActive: boolean;
 
-  constructor() { }
+  constructor(private _loaderService: LoaderService) { }
 
   ngOnInit() {
     this.menu = Constants.Category_List;
-    console.log(this.menu);
+    this._loaderService.currentloaderVisible.subscribe(isLoaderActive => this.isLoaderActive = isLoaderActive);
   }
 }

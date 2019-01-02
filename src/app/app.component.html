@@ -18,3 +18,8 @@
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
+<div class="spinner-conatiner" *ngIf="isLoaderActive">
+  <div class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

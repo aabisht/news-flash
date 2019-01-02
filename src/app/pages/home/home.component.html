@@ -1,0 +1,159 @@
+<div class="home-header-slider-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+          <!-- <h2 class="heading">Top News</h2> -->
+          <owl-carousel *ngIf="topHeadlinesData"
+          [options]="owlCarouseloptions"
+          [carouselClasses]="['owl-theme', 'equal-height-slider home-header-slider', 'sliding']">
+            <div class="item" *ngFor="let newsArticle of topHeadlinesData.articles; let i = index">
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title><a [href]="newsArticle.url" target="_blank"><i class="material-icons">launch</i>{{ newsArticle.title }}</a></mat-card-title>
+                  <mat-card-subtitle class="meta">
+                    <div class="break-all-word" *ngIf="newsArticle.author">
+                      <i class="material-icons">perm_identity</i> {{ newsArticle.author }}
+                    </div>
+                    <div class="break-all-word" *ngIf="newsArticle.source.name">
+                      <i class="material-icons">record_voice_over</i>{{ newsArticle.source.name }}
+                    </div>
+                    <div class="break-all-word" *ngIf="newsArticle.publishedAt">
+                      <i class="material-icons">calendar_today</i>{{ newsArticle.publishedAt | date:'medium' }}
+                    </div>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image *ngIf="newsArticle.urlToImage" [src]="newsArticle.urlToImage" [alt]="newsArticle.title">
+                <mat-card-content>
+                  <p *ngIf="newsArticle.description">{{ newsArticle.description }}</p>
+                  <p *ngIf="!newsArticle.description && newsArticle.content">{{ newsArticle.content }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <a [href]="newsArticle.url" target="_blank" mat-button>Read More</a>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </owl-carousel>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="news-category-home-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 news-category-health-home-wrapper" *ngIf="topHealthHeadlinesData">
+        <div class="title-wrapper">
+          <h3 class="title">HEALTH</h3>
+        </div>
+        <div class="news-data-wrapper">
+          <div class="media-wrapper" *ngIf="topHealthHeadlinesData.urlToImage">
+              <img class="img-responsive"  [src]="topHealthHeadlinesData.urlToImage" [alt]="topHealthHeadlinesData.title">
+          </div>
+          <div class="media-data-wrapper">
+            <h4><a [href]="topHealthHeadlinesData.url" target="_blank">{{ topHealthHeadlinesData.title }}</a></h4>
+            <div class="meta-wrapper">
+              <div class="break-all-word" *ngIf="topHealthHeadlinesData.author">
+                <i class="material-icons">perm_identity</i> by <i>{{ topHealthHeadlinesData.author }}</i>
+              </div>
+              <div class="break-all-word" *ngIf="topHealthHeadlinesData.source.name">
+                <i class="material-icons">record_voice_over</i> Source <i>{{ topHealthHeadlinesData.source.name }}</i>
+              </div>
+              <div class="break-all-word" *ngIf="topHealthHeadlinesData.publishedAt">
+                <i class="material-icons">calendar_today</i> Published On <i>{{ topHealthHeadlinesData.publishedAt | date:'medium' }}</i>
+              </div>
+            </div>
+            <p *ngIf="topHealthHeadlinesData.description">{{ topHealthHeadlinesData.description }}</p>
+            <p *ngIf="!topHealthHeadlinesData.description && topHealthHeadlinesData.content">{{ topHealthHeadlinesData.content }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8 news-category-business-home-wrapper" *ngIf="topBusinessHeadlinesData">
+        <div class="title-wrapper">
+          <h3 class="title">BUSINESS</h3>
+        </div>
+        <div class="row">
+          <div *ngFor="let newsArticle of topBusinessHeadlinesData.articles; let i = index"
+                [ngClass]="{'col-sm-12' : (i === 0), 'col-sm-6': (i!==0)}">
+
+          <div *ngIf="i===0">
+            <div class="row">
+              <div class="col-sm-4" *ngIf="newsArticle.urlToImage">
+                  <img class="img-responsive"  [src]="newsArticle.urlToImage" [alt]="newsArticle.title">
+              </div>
+              <div [ngClass]="{'col-sm-8' : newsArticle.urlToImage, 'col-sm-12': (!newsArticle.urlToImage)}">
+                  <h4><a [href]="newsArticle.url" target="_blank">{{ newsArticle.title }}</a></h4>
+                  <div class="meta-wrapper">
+                    <div class="break-all-word" *ngIf="newsArticle.author">
+                      <i class="material-icons">perm_identity</i> by <i>{{ newsArticle.author }}</i>
+                    </div>
+                    <div class="break-all-word" *ngIf="newsArticle.source.name">
+                      <i class="material-icons">record_voice_over</i> Source <i>{{ newsArticle.source.name }}</i>
+                    </div>
+                    <div class="break-all-word" *ngIf="newsArticle.publishedAt">
+                      <i class="material-icons">calendar_today</i> Published On <i>{{ newsArticle.publishedAt | date:'medium' }}</i>
+                    </div>
+                  </div>
+                  <p *ngIf="newsArticle.description">{{ newsArticle.description }}</p>
+                  <p *ngIf="!newsArticle.description && newsArticle.content">{{ newsArticle.content }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="i!==0">
+            <div class="media-wrapper" *ngIf="newsArticle.urlToImage">
+                <img class="img-responsive"  [src]="newsArticle.urlToImage" [alt]="newsArticle.title">
+            </div>
+            <div class="media-data-wrapper">
+              <h4><a [href]="newsArticle.url" target="_blank">{{ newsArticle.title }}</a></h4>
+              <div class="meta-wrapper">
+                <div class="break-all-word" *ngIf="newsArticle.author">
+                  <i class="material-icons">perm_identity</i> by <i>{{ newsArticle.author }}</i>
+                </div>
+                <div class="break-all-word" *ngIf="newsArticle.source.name">
+                  <i class="material-icons">record_voice_over</i> Source <i>{{ newsArticle.source.name }}</i>
+                </div>
+                <div class="break-all-word" *ngIf="newsArticle.publishedAt">
+                  <i class="material-icons">calendar_today</i> Published On <i>{{ newsArticle.publishedAt | date:'medium' }}</i>
+                </div>
+              </div>
+              <p *ngIf="newsArticle.description">{{ newsArticle.description }}</p>
+              <p *ngIf="!newsArticle.description && newsArticle.content">{{ newsArticle.content }}</p>
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 news-category-general-home-wrapper" *ngIf="topGeneralHeadlinesData">
+        <div class="title-wrapper">
+          <h3 class="title">GENERAL</h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-4" *ngFor="let newsArticle of topGeneralHeadlinesData.articles; let i = index">
+            <div class="media-wrapper" *ngIf="newsArticle.urlToImage">
+                <img class="img-responsive"  [src]="newsArticle.urlToImage" [alt]="newsArticle.title">
+            </div>
+            <div class="media-data-wrapper">
+              <h4><a [href]="newsArticle.url" target="_blank">{{ newsArticle.title }}</a></h4>
+              <div class="meta-wrapper">
+                <div class="break-all-word" *ngIf="newsArticle.author">
+                  <i class="material-icons">perm_identity</i> by <i>{{ newsArticle.author }}</i>
+                </div>
+                <div class="break-all-word" *ngIf="newsArticle.source.name">
+                  <i class="material-icons">record_voice_over</i> Source <i>{{ newsArticle.source.name }}</i>
+                </div>
+                <div class="break-all-word" *ngIf="newsArticle.publishedAt">
+                  <i class="material-icons">calendar_today</i> Published On <i>{{ newsArticle.publishedAt | date:'medium' }}</i>
+                </div>
+              </div>
+              <p *ngIf="newsArticle.description">{{ newsArticle.description }}</p>
+              <p *ngIf="!newsArticle.description && newsArticle.content">{{ newsArticle.content }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

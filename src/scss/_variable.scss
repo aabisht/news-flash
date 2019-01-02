@@ -1,5 +1,8 @@
+@import './light-design/variables';
+
 $black-color: #000000;
 $white-color: #ffffff;
+$primary-color: #da0000;
 
 $header-container-wrapper-bg-color: $black-color;
 $header-container-wrapper-text-color: $white-color;
@@ -10,3 +13,16 @@ $menu-drawer-btn-size: 40px;
 $menu-drawer-toggle-btn-text-color: $white-color;
 
 $weather-time-larg-text-size: 28px;
+
+$header-logo-font-family: $font-family-secondary;
+$header-logo-secondary-font-family: $font-family-primary;
+$header-logo-seconday-color: $primary-color;
+
+$spinner-conatiner-bg-color: rgba($black-color, 0.3);
+
+$heading-color: $primary-color;
+
+
+$home-header-slider-arrow-color: $primary-color;
+$home-header-slider-dot-color: $primary-color;
+$home-header-slider-mat-card-title-color: $primary-color;
